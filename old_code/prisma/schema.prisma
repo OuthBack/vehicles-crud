@@ -1,0 +1,21 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["jsonProtocol"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Vehicle {
+  id      Int    @id @default(autoincrement())
+  year    Int
+  plate   String @unique
+  chassis String @unique
+  renavam String @unique
+  model   String
+  brand   String
+
+  @@map("vehicles")
+}
