@@ -11,7 +11,7 @@ import {
   Pagination,
   PaginationType,
 } from '~/decorators/pagination/pagination.decorator';
-import { ApiBody, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBody, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { VehiclesService } from '../services/vehicles.service';
 import { CreateVehicleDto } from '../dto/create-vehicle.dto';
 import { FindOneByPlateDto } from '../dto/find-one-by-plate.dto';
@@ -37,7 +37,7 @@ export class VehiclesController {
     status: 200,
     description: 'The vehicles have been found.',
   })
-  @ApiBody({ type: PaginationType })
+  @ApiQuery({ type: PaginationType })
   @Get()
   findAll(@Pagination() pagination: PaginationType) {
     return this.vehiclesService.findAll(pagination);
