@@ -13,13 +13,14 @@ async function bootstrap() {
     .addTag('vehicles')
     .build();
 
+  app.setGlobalPrefix('api');
+
   const vehicleDocument = SwaggerModule.createDocument(app, options, {
     include: [VehiclesModule],
   });
 
-  app.setGlobalPrefix('api');
+  SwaggerModule.setup('', app, vehicleDocument);
 
-  SwaggerModule.setup('api/docs', app, vehicleDocument);
   await app.listen(3000);
 }
 bootstrap();
