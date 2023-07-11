@@ -13,6 +13,11 @@ async function bootstrap() {
     .addTag('vehicles')
     .build();
 
+  app.enableCors({
+    origin: '*',
+    methods: 'GET, PUT, POST, DELETE',
+    allowedHeaders: 'Content-Type, Authorization',
+  });
   app.setGlobalPrefix('api');
 
   const vehicleDocument = SwaggerModule.createDocument(app, options, {
